@@ -1,0 +1,60 @@
+{
+    "blogs": [
+        {
+            "id": "1",
+            "title": "Future of Fintech",
+            "category": [
+                "FINANCE",
+                "TECH"
+            ],
+            "description": "Exploring how AI and blockchain are reshaping financial services",
+            "date": "2026-01-11T09:12:45.120Z",
+            "coverImage": "https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg",
+            "content": "The intersection of finance and technology has never been more vibrant. As we look towards 2024, the role of the Chartered Accountant is evolving from mere bookkeeping to strategic financial analysis powered by AI.\n\nAutomating Accounting\nAutomation is no longer a buzzword; it's a reality. Routine tasks like data entry, reconciliation, and payroll processing are being automated at an unprecedented pace. This shift allows finance professionals to focus on high-value activities.\n\nBlockchain: Beyond Cryptocurrency\nWhile Bitcoin grabs the headlines, the underlying technology—blockchain—is quietly revolutionizing auditing. The immutable ledger provides a 'single source of truth' that could potentially eliminate the need for sampling in audits."
+        },
+        {
+            "id": "2",
+            "title": "Ace Your CA Finals",
+            "category": [
+                "CAREER"
+            ],
+            "description": "Strategies and study plans to help you clear your exams in the first attempt without burning out.",
+            "date": "2026-01-22T11:30:00.000Z",
+            "coverImage": "https://images.pexels.com/photos/5905709/pexels-photo-5905709.jpeg",
+            "content": "Preparing for CA Finals requires more than just hard work; it requires a strategy. Break down your syllabus into manageable chunks and set realistic goals. Focus on understanding concepts rather than rote learning.\n\nTime management is key. Allocate more time to subjects you find difficult and take regular breaks to avoid burnout."
+        },
+        {
+            "id": "3",
+            "title": "Understanding Tax Reforms",
+            "category": [
+                "REGULATIONS"
+            ],
+            "description": "A comprehensive breakdown of the new tax laws introduced this fiscal year and their impact on...",
+            "date": "2026-01-15T10:00:00.000Z",
+            "coverImage": "https://images.pexels.com/photos/6863333/pexels-photo-6863333.jpeg",
+            "content": "Tax reforms are essential for a growing economy. The latest changes aim to simplify the tax structure and encourage investment. Understanding these reforms is crucial for both individuals and businesses to remain compliant and optimize their tax liabilities."
+        },
+        {
+            "id": "4",
+            "title": "Soft Skills for Auditors",
+            "category": [
+                "SKILLS"
+            ],
+            "description": "Why technical knowledge isn't enough. Mastering communication and negotiation in your audits.",
+            "date": "2026-01-08T10:00:00.000Z",
+            "coverImage": "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg",
+            "content": "Technical expertise is the foundation, but soft skills are what build the structure of a successful audit career. Communication, empathy, and negotiation are vital when dealing with clients and internal teams."
+        },
+        {
+            "id": "5",
+            "title": "Audit Automation Tools",
+            "category": [
+                "TECHNOLOGY"
+            ],
+            "description": "Top 5 tools every modern auditor should be using in 2024 to increase efficiency.",
+            "date": "2026-01-01T10:00:00.000Z",
+            "coverImage": "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg",
+            "content": "Automation tools are transforming the audit landscape. From data extraction to risk assessment, these tools allow auditors to work faster and with more precision. Here are our top picks for the year."
+        }
+    ]
+}

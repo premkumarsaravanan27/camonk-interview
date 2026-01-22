@@ -1,12 +1,16 @@
 import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { blogService } from "@/services/blogService"
+import { todoService } from "@/services/todoService"
 import { Navbar } from "@/components/Navbar"
 import { BlogList } from "@/components/BlogList"
 import { BlogDetail } from "@/components/BlogDetail"
 import { CreateBlogForm } from "@/components/CreateBlogForm"
-import { Search } from "lucide-react"
+import { TodoList } from "@/components/TodoList"
+import { CreateTodoForm } from "@/components/CreateTodoForm"
+import { Search, ListTodo } from "lucide-react"
 import { Input } from "@/components/ui/input"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 function App() {
   const [selectedId, setSelectedId] = useState(null)
@@ -14,6 +18,12 @@ function App() {
   const { data: blogs, isLoading, error } = useQuery({
     queryKey: ['blogs'],
     queryFn: blogService.getAllBlogs,
+  })
+
+  // Todos query
+  const { data: todos, isLoading: isTodosLoading, error: todosError } = useQuery({
+    queryKey: ['todos'],
+    queryFn: todoService.getAllTodos,
   })
 
   // Selected blog query
@@ -43,35 +53,69 @@ function App() {
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-          {/* Left Column: Blog List */}
+          {/* Left Column: Tabs for Blog List and Todos */}
           <div className="lg:col-span-4 space-y-6">
-            <div className="flex items-center justify-between mb-2">
-              <h2 className="text-lg font-bold flex items-center gap-2">
-                Latest Articles
-              </h2>
-              <CreateBlogForm />
-            </div>
+            <Tabs defaultValue="blogs" className="w-full">
+              <TabsList className="grid w-full grid-cols-2 mb-6">
+                <TabsTrigger value="blogs" className="gap-2">
+                  <Search className="w-4 h-4" />
+                  Articles
+                </TabsTrigger>
+                <TabsTrigger value="todos" className="gap-2">
+                  <ListTodo className="w-4 h-4" />
+                  Tasks
+                </TabsTrigger>
+              </TabsList>
 
-            <div className="relative mb-6">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-              <Input
-                placeholder="Search articles..."
-                className="pl-10 rounded-full bg-white dark:bg-zinc-900 border-none shadow-sm ring-1 ring-zinc-200 dark:ring-zinc-800"
-              />
-            </div>
+              <TabsContent value="blogs" className="space-y-6 mt-0">
+                <div className="flex items-center justify-between mb-2">
+                  <h2 className="text-lg font-bold flex items-center gap-2">
+                    Latest Articles
+                  </h2>
+                  <CreateBlogForm />
+                </div>
 
-            {error && (
-              <div className="p-4 bg-destructive/10 text-destructive rounded-xl text-sm font-medium border border-destructive/20">
-                Error loading blogs: {error.message}
-              </div>
-            )}
+                <div className="relative mb-6">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                  <Input
+                    placeholder="Search articles..."
+                    className="pl-10 rounded-full bg-white dark:bg-zinc-900 border-none shadow-sm ring-1 ring-zinc-200 dark:ring-zinc-800"
+                  />
+                </div>
 
-            <BlogList
-              blogs={blogs}
-              isLoading={isLoading}
-              selectedId={selectedId}
-              onSelect={setSelectedId}
-            />
+                {error && (
+                  <div className="p-4 bg-destructive/10 text-destructive rounded-xl text-sm font-medium border border-destructive/20">
+                    Error loading blogs: {error.message}
+                  </div>
+                )}
+
+                <BlogList
+                  blogs={blogs}
+                  isLoading={isLoading}
+                  selectedId={selectedId}
+                  onSelect={setSelectedId}
+                />
+              </TabsContent>
+
+              <TabsContent value="todos" className="space-y-6 mt-0">
+                <div className="flex items-center justify-between mb-2">
+                  <h2 className="text-lg font-bold flex items-center gap-2">
+                    My Tasks
+                  </h2>
+                  <CreateTodoForm />
+                </div>
+
+                {todosError && (
+                  <div className="p-4 bg-destructive/10 text-destructive rounded-xl text-sm font-medium border border-destructive/20">
+                    Error loading todos: {todosError.message}
+                  </div>
+                )}
+
+                <div className="bg-white dark:bg-zinc-900 rounded-2xl p-6 shadow-sm border border-zinc-200 dark:border-zinc-800">
+                  <TodoList todos={todos} isLoading={isTodosLoading} />
+                </div>
+              </TabsContent>
+            </Tabs>
           </div>
 
           {/* Right Column: Blog Detail */}
